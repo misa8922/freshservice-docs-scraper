@@ -6,4 +6,5 @@ data/clean/
 logs/
 notebooks/
 .DS_Store
-selenium-screenshots/
+.playwright/
+.venv/
