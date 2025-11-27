@@ -14,10 +14,10 @@ LOG_FILE = Path("logs/fetch_primary_page.log")
 
 # Playwright settings
 # Set HEADLESS = False during debugging to see the browser
-HEADLESS = True
+HEADLESS = False
 
 # Timeout (ms) for Playwright waits / navigation
-DEFAULT_TIMEOUT_MS = 30000  # 30 seconds
+DEFAULT_TIMEOUT_MS = 60000  # 30 seconds
 
 def ensure_dirs():
     """Create required directories if they don't exist yet."""
