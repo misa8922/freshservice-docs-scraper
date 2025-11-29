@@ -27,15 +27,16 @@ A compact Retrieval-Augmented Generation (RAG) assistant for Freshservice API do
 ## Mermaid 
 
 ```mermaid
+
 flowchart TD
-  A[Freshservice UI / Docs] --> B[data/raw/*.html]
-  B --> C[parse & normalize -> deduped_docs.jsonl]
-  C --> D[chunk_texts -> chunks/*.json]
-  D --> E[dedupe chunks -> deduped_chunks.jsonl]
-  E --> F[embed -> FAISS index + meta.jsonl]
-  F --> G[retrieve (top_k)]
-  G --> H[build prompt]
-  H --> I[OpenAI / LLM]
-  I --> J[Answer + citations]
-  J --> K[FastAPI + UI]
+  A["Freshservice UI / Docs"] --> B["data/raw/*.html"]
+  B --> C["parse & normalize → deduped_docs.jsonl"]
+  C --> D["chunk_texts → chunks/*.json"]
+  D --> E["dedupe chunks → deduped_chunks.jsonl"]
+  E --> F["embed → FAISS index + meta.jsonl"]
+  F --> G["retrieve (top_k)"]
+  G --> H["build prompt"]
+  H --> I["OpenAI / LLM"]
+  I --> J["Answer + citations"]
+
 
