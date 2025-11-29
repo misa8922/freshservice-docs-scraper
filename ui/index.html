@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Freshservice API Assistant</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        #answerBox, #retrievalBox { 
+            margin-top: 20px; padding: 15px; 
+            border: 1px solid #ddd; border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Freshservice API Assistant</h2>
+
+    <input id="question" placeholder="Ask your question..." style="width: 400px; padding: 8px;">
+    <button onclick="ask()">Ask</button>
+
+    <div id="answerBox" style="display:none;"></div>
+    <div id="retrievalBox" style="display:none;"></div>
+
+    <script>
+        async function ask() {
+            const q = document.getElementById("question").value;
+
+            const res = await fetch("http://localhost:8001/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ question: q })
+            });
+
+            const data = await res.json();
+
+            // show answer
+            document.getElementById("answerBox").style.display = "block";
+            document.getElementById("answerBox").innerHTML =
+                "<h3>Answer</h3><pre>" + data.answer + "</pre>";
+
+            // show citations + scores
+            let html = "<h3>Retrieved Chunks</h3>";
+            data.retrieved.forEach((r, idx) => {
+                html += `<p><b>[${idx+1}] ${r.chunk_id}</b><br>
+                         score: ${r.score.toFixed(4)}<br>
+                         preview: ${r.preview}</p>`;
+            });
+
+            document.getElementById("retrievalBox").style.display = "block";
+            document.getElementById("retrievalBox").innerHTML = html;
+        }
+    </script>
+
+</body>
+</html>

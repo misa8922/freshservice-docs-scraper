@@ -1,23 +1,23 @@
-
+#1
 # src/scraper/config.py
 from pathlib import Path
 from datetime import datetime
 
-# Primary URL to fetch
+# Primary URL
 BASE_URL = "https://api.freshservice.com/#ticket_attributes"
 
-# Where to save raw HTML
+# saving raw HTML
 RAW_DIR = Path("data/raw")
 
-# Logging file
+# Log file
 LOG_FILE = Path("logs/fetch_primary_page.log")
 
 # Playwright settings
-# Set HEADLESS = False during debugging to see the browser
+
 HEADLESS = False
 
-# Timeout (ms) for Playwright waits / navigation
-DEFAULT_TIMEOUT_MS = 60000  # 30 seconds
+# Timeout (ms) for Playwright waits 
+DEFAULT_TIMEOUT_MS = 60000  
 
 def ensure_dirs():
     """Create required directories if they don't exist yet."""
